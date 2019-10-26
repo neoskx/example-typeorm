@@ -1,21 +1,21 @@
-import "reflect-metadata";
 import {createConnection} from "typeorm";
-import {User} from "./entity/User";
 
-createConnection().then(async connection => {
+var electron = require("electron");
+var url = require("url");
 
-    console.log("Inserting a new user into the database...");
-    const user = new User();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = 25;
-    await connection.manager.save(user);
-    console.log("Saved a new user with id: " + user.id);
-
-    console.log("Loading users from the database...");
-    const users = await connection.manager.find(User);
-    console.log("Loaded users: ", users);
-
-    console.log("Here you can setup and run express/koa/any other framework.");
-
-}).catch(error => console.log(error));
+electron.app.on("ready", () => {
+    var mainWindow = new electron.BrowserWindow({});
+    mainWindow.loadURL(url.format({
+        pathname: __dirname + "/index.html",
+        protocol: "file:",
+        slashes: true
+    }));
+    mainWindow.toggleDevTools();
+    setTimeout(() => {
+        console.log("You can also get posts from the second process:");
+        createConnection().then(async connection => {
+            const posts = await connection.getRepository("Post").find();
+            console.log("posts:", posts);
+        });
+    }, 5000);
+});

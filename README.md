@@ -1,7 +1,8 @@
-# Awesome Project Build with TypeORM
+# Example how to use TypeORM with Electron using JavaScript
 
-Steps to run this project:
+1. clone repository 
+2. run `npm i`
+3. run `npm start`
+4. enjoy!
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+![typeorm-electron-example](./resources/screen.png)

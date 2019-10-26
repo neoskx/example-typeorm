@@ -1,18 +1,39 @@
 {
-   "name": "Test",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
-   "devDependencies": {
-      "ts-node": "3.3.0",
-      "@types/node": "^8.0.29",
-      "typescript": "3.3.3333"
-   },
-   "dependencies": {
-      "typeorm": "0.2.20",
-      "reflect-metadata": "^0.1.10",
-      "mongodb": "^3.0.8"
-   },
-   "scripts": {
-      "start": "ts-node src/index.ts"
-   }
+  "name": "example-typeorm",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "author": {
+    "name": "Shaoke Xu",
+    "email": "shaokexu@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaoke/example-typeorm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shaoke/example-typeorm.git/issues"
+  },
+  "tags": [
+    "orm",
+    "typescript",
+    "typescript-orm",
+    "electron-orm",
+    "typeorm-sample",
+    "typeorm-example"
+  ],
+  "dependencies": {
+    "electron": "^7.0.0",
+    "sqlite3": "^4.1.0",
+    "typeorm": "^0.2.20"
+  },
+  "devDependencies": {
+    "electron-builder": "^21.2.0",
+    "typescript": "^3.6.4"
+  },
+  "scripts": {
+    "start": "tsc && electron src/index.js",
+    "postinstall": "install-app-deps"
+  }
 }

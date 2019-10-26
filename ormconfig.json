@@ -1,20 +1,10 @@
 {
-   "type": "mongodb",
-   "url": "mongodb://neo:Ineo*2019@ds145456.mlab.com:45456/sold-dia-soi-watch-properties",
-   "synchronize": true,
-   "logging": false,
-   "entities": [
-      "src/entity/**/*.ts"
-   ],
-   "migrations": [
-      "src/migration/**/*.ts"
-   ],
-   "subscribers": [
-      "src/subscriber/**/*.ts"
-   ],
-   "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
-   }
+  "type": "sqlite",
+  "synchronize": true,
+  "logging": true,
+  "logger": "simple-console",
+  "database": "database.sqlite",
+  "entities": [
+    "src/entity/*.js"
+  ]
 }
