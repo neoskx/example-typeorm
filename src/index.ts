@@ -1,21 +1,17 @@
-import {createConnection} from "typeorm";
-
-var electron = require("electron");
-var url = require("url");
+const electron = require("electron");
+const url = require("url");
 
 electron.app.on("ready", () => {
     var mainWindow = new electron.BrowserWindow({});
-    mainWindow.loadURL(url.format({
-        pathname: __dirname + "/index.html",
-        protocol: "file:",
-        slashes: true
-    }));
-    mainWindow.toggleDevTools();
+    require('./server/bin/www');
+
     setTimeout(() => {
-        console.log("You can also get posts from the second process:");
-        createConnection().then(async connection => {
-            const posts = await connection.getRepository("Post").find();
-            console.log("posts:", posts);
-        });
-    }, 5000);
+        // mainWindow.loadURL(url.format({
+        //     pathname: __dirname + "/index.html",
+        //     protocol: "file:",
+        //     slashes: true
+        // }));
+        // mainWindow.toggleDevTools();
+        mainWindow.loadURL('http://localhost:3000');
+    }, 2000);
 });
