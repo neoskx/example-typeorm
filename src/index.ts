@@ -1,17 +1,10 @@
 const electron = require("electron");
 const url = require("url");
+import startServer from './server';
 
-electron.app.on("ready", () => {
+electron.app.on("ready", async () => {
     var mainWindow = new electron.BrowserWindow({});
-    require('./server/bin/www');
-
-    setTimeout(() => {
-        // mainWindow.loadURL(url.format({
-        //     pathname: __dirname + "/index.html",
-        //     protocol: "file:",
-        //     slashes: true
-        // }));
-        // mainWindow.toggleDevTools();
-        mainWindow.loadURL('http://localhost:3000');
-    }, 2000);
+    await startServer();
+    console.log('Successful start server');
+    mainWindow.loadURL('http://localhost:3030');
 });

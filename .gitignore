@@ -8,3 +8,6 @@ src/entity/**/*.js
 src/entity/**/*.js.map
 src/index.js
 src/index.js.map
+src/**/*.js
+src/**/*.js.map
+*/sql
