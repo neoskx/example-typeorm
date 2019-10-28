@@ -10,4 +10,4 @@ src/index.js
 src/index.js.map
 src/**/*.js
 src/**/*.js.map
-*/sql
+*.sql
