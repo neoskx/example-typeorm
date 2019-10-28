@@ -30,6 +30,7 @@
     "electron": "^7.0.0",
     "electron-log": "^3.0.8",
     "express": "^4.17.1",
+    "react": "^16.11.0",
     "serve-favicon": "^2.5.0",
     "server-destroy": "^1.0.1",
     "sqlite3": "^4.1.0",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "copyfiles": "^2.1.1",
+    "create-react-app": "^3.2.0",
     "electron-builder": "^21.2.0",
     "typescript": "^3.6.4"
   },
