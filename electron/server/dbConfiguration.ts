@@ -1,6 +1,6 @@
 import config from "./config";
 
-function getDBConfiguration() {
+export default function getDBConfiguration() {
   // Default use sqlite
   if (!process.env.TYPEORM_CONNECTION) {
     return { ...config.DEFAULT_DB_CONFIG, ...config.DEFAULT_SQLITE };
@@ -37,4 +37,6 @@ function getDBConfiguration() {
   }
 }
 
-module.exports = getDBConfiguration;
+export function getDBType(){
+  return process.env.TYPEORM_CONNECTION || config.DEFAULT_SQLITE.type;
+}

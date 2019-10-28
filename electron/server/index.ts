@@ -6,10 +6,12 @@ const typeorm = require("typeorm");
 const enableDestroy = require("server-destroy");
 const createApp = require("./app");
 import config from "./config";
-const dbConfig = require("./dbConfiguration")();
+import getDBConfiguration from './dbConfiguration';
 
 export default async function startServer() {
   await new Promise((resolve, reject) => {
+    const dbConfig = getDBConfiguration();
+    console.log('dbConfig:', dbConfig);
     typeorm
       .createConnection(dbConfig)
       .then(async connection => {
