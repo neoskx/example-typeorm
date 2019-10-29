@@ -1,19 +1,9 @@
 import { Entity, Column } from "typeorm";
-import {getDBType} from '../dbConfiguration';
-import config from '../config';
-import BaseEntityMongo from './BaseEntityMongo';
-import BaseEntitySQL from './BaseEntitySQL';
-
-let BaseEntity:any;
-if(getDBType()===config.DEFAULT_MONGODB.type){
-  BaseEntity = BaseEntityMongo;
-}else{
-  BaseEntity = BaseEntitySQL;
-}
-
+import getBase from './Base';
+let Base:any = getBase();
 
 @Entity()
-export class User extends BaseEntity {
+export class User extends Base {
 
   @Column()
   firstName: string;
@@ -23,4 +13,7 @@ export class User extends BaseEntity {
 
   @Column()
   isActive: boolean;
+
+  @Column("simple-json")
+  profile: { name: string, nickname: string };
 }

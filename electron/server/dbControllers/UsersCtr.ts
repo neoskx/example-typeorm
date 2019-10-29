@@ -1,4 +1,4 @@
-import {getRepository} from 'typeorm';
+// import {getRepository} from 'typeorm';
 import {User} from '../entity/User'
 
 export async function createUser(globalId: string, firstName: string, lastName:string, isActive: boolean){
@@ -8,7 +8,9 @@ export async function createUser(globalId: string, firstName: string, lastName:s
         user.firstName = firstName;
         user.lastName = lastName;
         user.isActive = !!isActive;
-        await getRepository(User).save(user);
+        user.profile = { name: "John", nickname: "Malkovich" };
+        // await getRepository(User).save(user);
+        await user.save();
         return user;
     }catch(err){
         throw err;
