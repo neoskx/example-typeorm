@@ -1,10 +1,8 @@
-import { Entity, Column } from "typeorm";
-import getBase from './Base';
-let Base:any = getBase();
+import {
+  Column
+} from "typeorm";
 
-@Entity()
-export class User extends Base {
-
+export abstract class BaseUser {
   @Column()
   firstName: string;
 

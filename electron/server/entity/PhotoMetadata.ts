@@ -1,10 +1,11 @@
 import { Entity, Column, OneToOne, JoinColumn } from "typeorm";
 import { Photo } from "./Photo";
-import getBase from "./Base";
-let Base: any = getBase();
+import {BaseSQL} from "./Base";
+// let Base: any = getBase();
 
 @Entity()
-export class PhotoMetadata extends Base {
+export class PhotoMetadata extends BaseSQL {
+// export class PhotoMetadata {
   @Column("int")
   height: number;
 

@@ -1,9 +1,10 @@
 import { Entity, Column } from "typeorm";
-import getBase from "./Base";
-let Base: any = getBase();
+import {BaseSQL} from "./Base";
+// let Base: any = getBase();
 
 @Entity()
-export class Photo extends Base {
+export class Photo extends BaseSQL {
+// export class Photo {
   @Column({
     length: 100
   })

@@ -4,7 +4,7 @@ export default {
   DEFAULT_DB_CONFIG: {
     logging: true,
     synchronize: true,
-    entities: [path.join(__dirname, "./entity/*.js")],
+    entities: [path.join(__dirname, "./entity/*.common.js")],
     // migrations: ["./migration/**/*.ts"],
     subscribers: [path.join(__dirname, "./subscriber/*.js")]
   },

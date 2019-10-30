@@ -8,10 +8,10 @@ import {
   PrimaryGeneratedColumn
 } from "typeorm";
 
-import { getDBType } from "../dbConfiguration";
-import config from "../config";
+// import { getDBType } from "../dbConfiguration";
+// import config from "../config";
 
-export abstract class Base extends BaseEntity {
+export abstract class Base {
   @Column()
   globalId: string;
 
@@ -32,12 +32,12 @@ export abstract class BaseSQL extends Base {
   id: number;
 }
 
-export default function getBase() {
-  if (getDBType() === config.DEFAULT_MONGODB.type) {
-    return BaseMongo;
-  } else {
-    return BaseSQL;
-  }
-}
+// export default function getBase() {
+//   if (getDBType() === config.DEFAULT_MONGODB.type) {
+//     return BaseMongo;
+//   } else {
+//     return BaseSQL;
+//   }
+// }
 
 // export default getBase();
