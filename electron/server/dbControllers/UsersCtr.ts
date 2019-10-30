@@ -35,6 +35,7 @@ export async function createUser(
       user.lastName = lastName;
       user.isActive = !!isActive;
       user.profile = profile;
+      user.photos = [];
       for (let i = 0; i < photos.length; i++) {
         let photo = photos[i];
         let p = new Photo();
