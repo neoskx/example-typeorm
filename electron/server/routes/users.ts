@@ -12,7 +12,7 @@ import {createUser, getUsers} from '../dbControllers/UsersCtr';
 /* GET users listing. */
 router.post('/users', async function(req, res, next) {
   let user = req.body;
-  user = await createUser(user.firstName, user.lastName, user.isActive, user.profile, user.photos);
+  user = await createUser(user.firstName, user.lastName, user.isActive, user.profile, user.photos, user.address);
   res.json(user);
 });
 

@@ -6,14 +6,16 @@ import User from "../entity/User";
 import Profile from "../entity/User/Profile";
 import Photo from "../entity/Photo";
 import PhotoClass from "../entity/Photo/Photo";
-
+import AddressClass from '../entity/Address/Address';
+import Address from '../entity/Address';
 
 export async function createUser(
   firstName: string,
   lastName: string,
   isActive: boolean,
   profile: Profile,
-  photos: PhotoClass[]
+  photos: PhotoClass[],
+  address: AddressClass
 ) {
   try {
     const user = new User();
@@ -29,6 +31,7 @@ export async function createUser(
       user.photos = photos.map(photo => {
         return new Photo(photo.url, photo.description, photo.size);
       });
+      user.address = address;
     } else {
       user.globalId = uuidv4();
       user.firstName = firstName;
@@ -46,6 +49,14 @@ export async function createUser(
         await getRepository(Photo).save(p);
         user.photos.push(p);
       }
+      let addr = new Address();
+      addr.globalId = uuidv4();
+      addr.streetAddress = address.streetAddress;
+      addr.city = address.city;
+      addr.state = address.state;
+      addr.zipCode = address.zipCode;
+      await getRepository(Address).save(addr);
+      user.address = addr;
     }
 
     await getRepository(User).save(user);
@@ -62,7 +73,7 @@ export async function getUsers() {
     if (isMongo) {
       users = await getRepository(User).find();
     } else {
-      users = await getRepository(User).find({ relations: ["photos"] });
+      users = await getRepository(User).find({ relations: ["photos", "address"] });
     }
 
     return users;
