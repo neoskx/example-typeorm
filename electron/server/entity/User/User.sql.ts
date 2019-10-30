@@ -1,24 +1,8 @@
 import { Entity, Column } from "typeorm";
-import { BaseSQL } from "../Base";
-// import { BaseUser } from "./BaseUser";
-// import { applyMixins } from "../../utils";
+import { BaseUser } from "./BaseUser";
 
 @Entity()
-class User extends BaseSQL {
-  @Column()
-  firstName: string;
-
-  @Column()
-  lastName: string;
-
-  @Column()
-  isActive: boolean;
-
-  @Column("simple-json")
-  profile: { name: string; nickname: string };
+class User extends BaseUser {
 }
-
-// interface User extends BaseSQL, BaseUser {}
-// applyMixins(User, [BaseSQL, BaseUser]);
 
 export default User;

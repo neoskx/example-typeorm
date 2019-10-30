@@ -1,8 +1,16 @@
-import {
-  Column
-} from "typeorm";
+import { Column } from "typeorm";
 
-export abstract class BaseUser {
+import { isMongo } from "../../utils";
+import { BaseSQL, BaseMongo } from "../Base";
+
+let Base: any;
+if (isMongo()) {
+  Base = BaseMongo;
+} else {
+  Base = BaseSQL;
+}
+
+export abstract class BaseUser extends Base {
   @Column()
   firstName: string;
 
@@ -13,5 +21,5 @@ export abstract class BaseUser {
   isActive: boolean;
 
   @Column("simple-json")
-  profile: { name: string, nickname: string };
+  profile: { name: string; nickname: string };
 }
