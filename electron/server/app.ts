@@ -4,7 +4,6 @@ var favicon = require("serve-favicon");
 var logger = require("winston");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
-import photoRouter from './routes/photo';
 
 async function createApp() {
 
@@ -21,7 +20,6 @@ async function createApp() {
 
   // app.use("/", index);
   app.use("/apis", users);
-  app.use("/apis", photoRouter);
 
   // catch 404 and forward to error handler
   // app.use(function(req, res, next) {

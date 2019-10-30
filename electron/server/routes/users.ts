@@ -7,14 +7,22 @@
 
 var express = require('express');
 var router = express.Router();
-import {createUser} from '../dbControllers/UsersCtr';
-const uuidv4 = require('uuid/v4');
+import {createUser, getUsers} from '../dbControllers/UsersCtr';
 
 /* GET users listing. */
 router.post('/users', async function(req, res, next) {
   let user = req.body;
-  user = await createUser(uuidv4(), user.firstName, user.lastName, user.isActive);
+  user = await createUser(user.firstName, user.lastName, user.isActive, user.profile, user.photos);
   res.json(user);
 });
+
+router.get('/users', async (req, res, next)=>{
+  try{
+    let users = await getUsers();
+    res.json(users);
+  }catch(err){
+    res.json(err);
+  }
+})
 
 module.exports = router;

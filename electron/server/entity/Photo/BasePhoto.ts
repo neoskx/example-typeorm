@@ -1,22 +1,22 @@
 import { Column } from "typeorm";
 
 import { isMongo } from "../../utils";
-import { BaseSQL, BaseMongo } from "../Base";
+import { BaseSQL } from "../Base";
 
 let Base: any;
 if (isMongo()) {
-  Base = BaseMongo;
+  Base = Object;
 } else {
   Base = BaseSQL;
 }
 
-export abstract class BaseUser extends Base {
+export abstract class BasePhoto extends Base {
   @Column()
-  firstName: string;
+  url: string;
 
   @Column()
-  lastName: string;
+  description: string;
 
   @Column()
-  isActive: boolean;
+  size: number;
 }
