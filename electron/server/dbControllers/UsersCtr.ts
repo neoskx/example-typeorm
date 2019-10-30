@@ -6,7 +6,7 @@ import User from "../entity/User";
 import Profile from "../entity/User/Profile";
 import Photo from "../entity/Photo";
 import PhotoClass from "../entity/Photo/Photo";
-import { EventListenerTypes } from "typeorm/metadata/types/EventListenerTypes";
+
 
 export async function createUser(
   firstName: string,
@@ -26,10 +26,6 @@ export async function createUser(
       user.profile.about = profile.about;
       user.profile.education = profile.education;
       user.profile.career = profile.career;
-      //   user.photos = [
-      //     new Photo("me-and-trees.jpg", "Me and Trees", 100),
-      //     new Photo("me-and-chakram.jpg", "Me and Chakram", 200)
-      //   ];
       user.photos = photos.map(photo => {
         return new Photo(photo.url, photo.description, photo.size);
       });
