@@ -7,7 +7,7 @@
 
 var express = require('express');
 var router = express.Router();
-import {createUser, getUsers, getUserById} from '../dbControllers/UsersCtr';
+import {createUser, getUsers, getUserById, deleteUserById} from '../dbControllers/UsersCtr';
 
 /* GET users listing. */
 router.post('/users', async function(req, res, next) {
@@ -29,6 +29,15 @@ router.get('/users/:userId', async (req, res, next)=>{
   try{
     let user = await getUserById(req.params.userId);
     res.json(user);
+  }catch(err){
+    res.json(err);
+  }
+});
+
+router.delete('/users/:userId', async (req, res, next)=>{
+  try{
+    await deleteUserById(req.params.userId);
+    res.status(204).end();
   }catch(err){
     res.json(err);
   }

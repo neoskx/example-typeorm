@@ -4,12 +4,13 @@ var favicon = require("serve-favicon");
 var logger = require("winston");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
+// import { createCategories } from './dbControllers/MaterializedPathCtr';
 
 async function createApp() {
 
   var index = require('./routes/index');
   var users = require('./routes/users');
-
+  
 
   var app = express();
 
@@ -20,6 +21,8 @@ async function createApp() {
 
   // app.use("/", index);
   app.use("/apis", users);
+
+  // createCategories();
 
   // catch 404 and forward to error handler
   // app.use(function(req, res, next) {

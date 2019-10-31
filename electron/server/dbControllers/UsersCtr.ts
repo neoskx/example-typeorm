@@ -101,3 +101,11 @@ export async function getUserById(userId) {
     throw err;
   }
 }
+
+export async function deleteUserById(userId){
+  try{
+    await getRepository(User).delete({globalId: userId});
+  }catch(err){
+    throw err;
+  }
+}
