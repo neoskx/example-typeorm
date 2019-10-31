@@ -50,7 +50,8 @@
   },
   "scripts": {
     "start": "rimraf build && cd ui && yarn build && cd .. && tsc && copyfiles -u 1 src/**/*.html src/**/*.png src/**/*.css src/**/*.ico  build && electron build/index.js",
-    "debug": "ndb electron/server/start.ts",
+    "server": "tsc && node build/server/start.js",
+    "debug": "ndb build/server/start.ts",
     "postinstall": "install-app-deps"
   }
 }

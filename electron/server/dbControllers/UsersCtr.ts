@@ -6,8 +6,8 @@ import User from "../entity/User";
 import Profile from "../entity/User/Profile";
 import Photo from "../entity/Photo";
 import PhotoClass from "../entity/Photo/Photo";
-import AddressClass from '../entity/Address/Address';
-import Address from '../entity/Address';
+import AddressClass from "../entity/Address/Address";
+import Address from "../entity/Address";
 
 export async function createUser(
   firstName: string,
@@ -73,9 +73,30 @@ export async function getUsers() {
     if (isMongo()) {
       users = await getRepository(User).find();
     } else {
-      users = await getRepository(User).find({ relations: ["photos", "address"] });
+      users = await getRepository(User).find({
+        relations: ["photos", "address"]
+      });
     }
     return users;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getUserById(userId) {
+  try {
+    let user: any;
+    if (isMongo()) {
+      user = await getRepository(User).findOne({
+        globalId: userId
+      });
+    } else {
+      user = await getRepository(User).findOne({
+        globalId: userId,
+        relations: ["photos", "address"]
+      });
+    }
+    return user;
   } catch (err) {
     throw err;
   }

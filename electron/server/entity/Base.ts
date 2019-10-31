@@ -2,14 +2,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  BaseEntity,
   ObjectIdColumn,
   ObjectID,
   PrimaryGeneratedColumn
 } from "typeorm";
-
-// import { getDBType } from "../dbConfiguration";
-// import config from "../config";
 
 export abstract class Base {
   @Column()
@@ -28,16 +24,6 @@ export abstract class BaseMongo extends Base {
 }
 
 export abstract class BaseSQL extends Base {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 }
-
-// export default function getBase() {
-//   if (getDBType() === config.DEFAULT_MONGODB.type) {
-//     return BaseMongo;
-//   } else {
-//     return BaseSQL;
-//   }
-// }
-
-// export default getBase();
