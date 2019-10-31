@@ -11,7 +11,8 @@
 curl -X POST \
   http://localhost:3030/apis/users \
   -H 'Content-Type: application/json' \
-  -d '{
+  -d '
+  {
   "firstName": "Michael",
   "lastName": "Sui",
   "isActive": true,
@@ -19,6 +20,12 @@ curl -X POST \
     "about": "About Trees and Me",
     "education": "Tree School",
     "career": "Lumberjack"
+  },
+  "address": {
+  	"streetAddress": "4220 Network Cir",
+  	"city": "Santa Clara",
+  	"state": "CA",
+  	"zipCode": 95054
   },
   "photos": [
     {
