@@ -70,12 +70,11 @@ export async function createUser(
 export async function getUsers() {
   try {
     let users: object;
-    if (isMongo) {
+    if (isMongo()) {
       users = await getRepository(User).find();
     } else {
       users = await getRepository(User).find({ relations: ["photos", "address"] });
     }
-
     return users;
   } catch (err) {
     throw err;

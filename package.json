@@ -44,11 +44,13 @@
     "copyfiles": "^2.1.1",
     "create-react-app": "^3.2.0",
     "electron-builder": "^21.2.0",
+    "ndb": "^1.1.5",
     "rimraf": "^3.0.0",
     "typescript": "^3.6.4"
   },
   "scripts": {
     "start": "rimraf build && cd ui && yarn build && cd .. && tsc && copyfiles -u 1 src/**/*.html src/**/*.png src/**/*.css src/**/*.ico  build && electron build/index.js",
+    "debug": "ndb electron/server/start.ts",
     "postinstall": "install-app-deps"
   }
 }
