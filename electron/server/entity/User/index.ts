@@ -1,6 +1,6 @@
 import {isMongo} from '../../utils';
 import UserMongo from './User.mongodb';
-import UserSQL from './User.mongodb';
+import UserSQL from './User.sql';
 
 let User:any;
 if (isMongo()) {

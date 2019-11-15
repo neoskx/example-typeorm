@@ -1,7 +1,15 @@
-import { Entity, Column, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import {
+  getRepository,
+  Entity,
+  Column,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+  BeforeRemove
+} from "typeorm";
 import { BaseUser } from "./BaseUser";
 import Photo from "../Photo/Photo.sql";
-import Address from '../Address/Address.sql';
+import Address from "../Address/Address.sql";
 
 @Entity()
 export default class User extends BaseUser {
@@ -11,7 +19,7 @@ export default class User extends BaseUser {
   @Column("simple-json")
   profile: { about: string; education: string; career: string };
 
-  @OneToOne(type=> Address)
+  @OneToOne(type => Address, { onDelete: "CASCADE" })
   @JoinColumn()
-  address: Address
+  address: Address;
 }

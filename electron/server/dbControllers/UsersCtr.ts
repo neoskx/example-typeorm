@@ -77,8 +77,10 @@ export async function getUsers() {
         relations: ["photos", "address"]
       });
     }
+    console.log("getUsers, users: ", users);
     return users;
   } catch (err) {
+    console.log("getUsers, err: ", err);
     throw err;
   }
 }
